@@ -4,50 +4,8 @@
 
 {% block content %}
 <h2>Add a New Pet</h2>
-<form method="POST" action="{{ url_for('add_pet') }}">
-    {{ form.hidden_tag() }}
-    <div class="form-group">
-        {{ form.name.label }}
-        {{ form.name(class="form-control") }}
-        {% for error in form.name.errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-    <div class="form-group">
-        {{ form.species.label }}
-        {{ form.species(class="form-control") }}
-        {% for error in form.species.errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-    <div class="form-group">
-        {{ form.photo_url.label }}
-        {{ form.photo_url(class="form-control") }}
-        {% for error in form.photo_url.errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-    <div class="form-group">
-        {{ form.age.label }}
-        {{ form.age(class="form-control") }}
-        {% for error in form.age.errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-    <div class="form-group">
-        {{ form.notes.label }}
-        {{ form.notes(class="form-control") }}
-        {% for error in form.notes.errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-    <div class="form-check">
-        {{ form.available(class="form-check-input") }}
-        {{ form.available.label(class="form-check-label") }}
-        {% for error in form.available.errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
+<form method="POST">
+    {% include "_form.html" %}
     <button type="submit" class="btn btn-primary">Add Pet</button>
 </form>
 {% endblock %}

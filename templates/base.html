@@ -1,30 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Pet Adoption Agency{% endblock %}</title>
+    <title>Adopt</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/adopt.css">
 </head>
 
 <body>
-    <header>
-        <h1><a href="/">Pet Adoption Agency</a></h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Adopt!</a>
+    </nav>
 
-    <footer>
-        <!-- Footer content goes here -->
-    </footer>
+    <div class="container">
+
+        {% for msg in get_flashed_messages() %}
+        <div class="alert alert-info">{{ msg }}</div>
+        {% endfor %}
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
 </body>
 
 </html>

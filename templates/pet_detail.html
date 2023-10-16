@@ -1,38 +1,18 @@
-{% extends "base.html" %}
-
-{% block title %}{{ pet.name }} - Pet Adoption Agency{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h2>{{ pet.name }}</h2>
-<p>Species: {{ pet.species }}</p>
+
+<h1>{{ pet.name }}</h1>
+
 {% if pet.photo_url %}
-<img src="{{ pet.photo_url }}" alt="{{ pet.name }} Photo" width="200">
-{% endif %}
-{% if pet.age is not none %}
-<p>Age: {{ pet.age }}</p>
+<img class="img-fluid" src="{{ pet.photo_url }}">
 {% endif %}
 
-<h3>Edit Pet Details</h3>
-<form method="POST" action="{{ url_for('pet_detail', pet_id=pet.id) }}">
-    {{ form.hidden_tag() }}
-    <div class="form-group">
-        {{ form.photo_url.label }}
-        {{ form.photo_url(class="form-control") }}
-        {% for error in form.photo_url.errors %}
-        <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-    <div class="form-group">
-        {{ form.notes.label }}
-        {{ form.notes(class="form-control") }}
-        {% for error in form.notes.errors %}
-        <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-    <div class="form-check">
-        {{ form.available(class="form-check-input") }}
-        {{ form.available.label(class="form-check-label") }}
-    </div>
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+<h2>Update</h2>
+
+<form method="POST">
+    {% include "_form.html" %}
+    <button class="btn btn-primary" type="submit">Update</button>
 </form>
+
 {% endblock %}
